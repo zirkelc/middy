@@ -3,13 +3,13 @@ import {
   Handler as LambdaHandler
 } from 'aws-lambda'
 
-declare type PluginHook = () => void
-declare type PluginHookWithMiddlewareName = (middlewareName: string) => void
-declare type PluginHookPromise = (
+export type PluginHook = () => void
+export type PluginHookWithMiddlewareName = (middlewareName: string) => void
+export type PluginHookPromise = (
   request: Request
 ) => Promise<unknown> | unknown
 
-interface PluginObject {
+export interface PluginObject {
   internal?: any
   beforePrefetch?: PluginHook
   requestStart?: PluginHook
@@ -37,7 +37,7 @@ export interface Request<
   internal: TInternal
 }
 
-declare type MiddlewareFn<
+export type MiddlewareFn<
   TEvent = any,
   TResult = any,
   TErr = Error,
